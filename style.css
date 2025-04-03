@@ -1,1 +1,364 @@
+/* --- Reset & Basic Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5; /* Lebih cerah sedikit */
+    color: #1a202c;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    /* Gradien baru yang lebih vibrant */
+    background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
+    padding: 60px 20px 50px 20px; /* Padding disesuaikan */
+    color: #ffffff;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 2.5rem; /* Lebih besar */
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.snapdonz-brand {
+    /* Efek teks gradien (opsional, bisa dihapus jika tidak suka) */
+    background: linear-gradient(45deg, #fceabb, #f8b500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700; /* Pastikan tebal */
+}
+
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+/* Platform Selector */
+.platform-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Jarak antar tombol */
+    margin-bottom: 30px; /* Jarak ke bawah */
+}
+
+.platform-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Border semi-transparan */
+    background-color: transparent; /* Transparan */
+    color: #ffffff;
+    border-radius: 50px; /* Bulat */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Jarak ikon ke teks */
+}
+
+.platform-button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.platform-button.active {
+    background-color: #ffffff; /* Background putih solid saat aktif */
+    /* Warna teks berubah sesuai platform */
+    color: #4a4af3; /* Warna dasar biru/ungu */
+    border-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+/* Warna ikon & teks saat aktif (spesifik platform) */
+.platform-button#select-tiktok.active { color: #FE2C55; /* Merah TikTok */ }
+.platform-button#select-instagram.active { color: #E1306C; /* Pink Instagram */ }
+
+
+/* --- Downloader Area --- */
+.downloader-area {
+    max-width: 650px;
+    margin: -40px auto 40px auto; /* Tarik ke atas sedikit, beri margin bawah */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    position: relative; /* Agar bisa ditarik ke atas hero */
+    z-index: 10;
+}
+
+.downloader-section {
+    display: none; /* Sembunyikan semua section by default */
+    text-align: center;
+    animation: fadeIn 0.5s ease; /* Animasi muncul */
+}
+
+.downloader-section.active {
+    display: block; /* Tampilkan section yang aktif */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.downloader-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+/* Warna ikon judul */
+#tiktok-downloader h2 i { color: #FE2C55; }
+#instagram-downloader h2 i { color: #E1306C; }
+
+/* Input Wrapper */
+.input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-wrapper input[type="text"] {
+    width: 100%;
+    padding: 16px 110px 16px 20px; /* Padding lebih besar */
+    border: 1px solid #dcdcdc; /* Border lebih soft */
+    border-radius: 10px;
+    background: #f9fafb; /* Background input sedikit beda */
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.input-wrapper input[type="text"]::placeholder { color: #aaa; }
+.input-wrapper input[type="text"]:focus {
+     outline: none;
+     border-color: #6e45e2; /* Warna ungu saat focus */
+     box-shadow: 0 0 0 3px rgba(110, 69, 226, 0.2);
+}
+
+/* Tombol Tempel */
+.paste-button {
+    position: absolute;
+    top: 6px; right: 6px; bottom: 6px; /* Adjust position */
+    padding: 0 18px; /* Padding lebih besar */
+    background-color: #eef2f7; color: #525f7f; /* Warna baru */
+    border: none; border-radius: 8px; cursor: pointer;
+    font-size: 0.85rem; font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background-color 0.2s ease;
+}
+.paste-button i { margin-right: 6px; }
+.paste-button:hover { background-color: #e2e8f0; }
+
+/* Tombol Download Utama */
+.download-main-button {
+    width: 100%;
+    padding: 16px; border: none; border-radius: 10px;
+    color: #ffffff; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+}
+.download-main-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradien spesifik untuk tombol download */
+.tiktok-grad { background: linear-gradient(90deg, #FE2C55 0%, #fd6f9a 100%); }
+.tiktok-grad:hover { box-shadow: 0 6px 20px rgba(254, 44, 85, 0.3); }
+
+.instagram-grad { background: linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%); }
+.instagram-grad:hover { box-shadow: 0 6px 20px rgba(225, 48, 108, 0.3); }
+
+
+/* --- Area Hasil & Loading --- */
+.result-container {
+    margin-top: 30px;
+    min-height: 50px; /* Beri ruang minimum walau kosong */
+}
+
+#result {
+    margin-top: 20px;
+    background-color: #f8f9fa; /* Background area hasil */
+    padding: 25px; border-radius: 12px; text-align: left;
+    display: none; /* Sembunyikan awal */
+    border: 1px solid #e9ecef;
+}
+#result video {
+    width: 100%; height: auto; max-height: 350px;
+    margin-bottom: 20px; border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); cursor: pointer;
+    transition: transform 0.3s ease; border: none;
+    background-color: #000; display: block;
+}
+#result video:hover { transform: scale(1.03); }
+
+/* Tombol Download Hasil */
+.download-buttons {
+    display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
+}
+a.download-btn {
+    flex-grow: 1; padding: 12px 18px; /* Padding lebih besar */
+    margin: 0; border: none; border-radius: 8px;
+    /* Gradien biru umum untuk tombol hasil */
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #ffffff; font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    text-align: center; transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 160px; /* Lebar minimum */
+}
+a.download-btn i { margin-right: 8px; }
+a.download-btn:hover {
+     background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+     transform: scale(1.05); /* Efek scale lebih besar */
+     box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+/* Loading & Error */
+.spinner {
+    display: none; border: 4px solid rgba(0, 0, 0, 0.1); /* Warna border lebih soft */
+    border-top: 4px solid #6e45e2; /* Warna ungu */
+    border-radius: 50%;
+    width: 40px; height: 40px; animation: spin 1s linear infinite;
+    margin: 20px auto 10px auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.loading-text {
+    font-size: 0.95rem; color: #555; display: none; margin-top: 5px; text-align: center;
+}
+.error {
+     color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb;
+     padding: 12px 18px; border-radius: 8px; margin: 0;
+     font-weight: 600; text-align: center; font-size: 0.95rem;
+}
+.api-warning {
+    font-size: 0.85rem;
+    color: #856404; /* Kuning gelap */
+    background-color: #fff3cd; /* Kuning muda */
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid #ffeeba;
+    text-align: center;
+}
+.api-warning i { margin-right: 5px; }
+
+/* --- Features Section --- */
+.features-section {
+    background-color: #ffffff; /* Background putih */
+    padding: 70px 20px; text-align: center;
+    margin-top: 50px; /* Jarak dari area downloader */
+}
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grid responsif */
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.feature-item {
+    padding: 20px;
+}
+.feature-icon {
+    color: #6e45e2; /* Warna ikon ungu */
+    margin-bottom: 15px;
+}
+.feature-item h3 {
+    font-size: 1.25rem; font-weight: 600; color: #1a2b48; margin-bottom: 10px;
+}
+.feature-item p {
+    font-size: 0.95rem; color: #4a5568; line-height: 1.7;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #e2e8f0; /* Warna footer */
+    color: #4a5568; /* Warna teks footer */
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 0.85rem;
+    margin-top: 0; /* Hapus margin atas jika menempel ke features */
+}
+footer p { margin-bottom: 5px; }
+
+/* --- Popup --- */
+.popup {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.88); /* Lebih gelap */
+    display: none;
+    justify-content: center; align-items: center; z-index: 999; padding: 20px;
+    backdrop-filter: blur(5px); /* Efek blur background popup */
+    -webkit-backdrop-filter: blur(5px);
+}
+.popup video {
+    width: auto; height: auto; max-width: 90%; max-height: 85%; /* Batas ukuran */
+    border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: none; cursor: default; display: block;
+}
+.popup .close {
+    position: absolute; top: 20px; right: 30px; font-size: 40px; /* Lebih besar */
+    color: #ffffff; cursor: pointer; line-height: 1; z-index: 1001;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+    opacity: 0.8; transition: opacity 0.2s ease;
+}
+.popup .close:hover { opacity: 1; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+     .main-title { font-size: 2rem; }
+     .subtitle { font-size: 1rem; }
+     .platform-selector { gap: 10px; }
+     .platform-button { padding: 10px 20px; font-size: 0.9rem; }
+     .downloader-area { margin: -30px auto 30px auto; padding: 25px; }
+     .downloader-section h2 { font-size: 1.3rem; }
+     .input-wrapper input[type="text"] { padding: 14px 95px 14px 15px; }
+     .paste-button { padding: 0 15px; }
+     .download-main-button { font-size: 1rem; padding: 15px; }
+     .features-section { padding: 50px 15px;}
+     .feature-grid { gap: 25px; }
+}
+@media (max-width: 480px) {
+     .main-title { font-size: 1.8rem; }
+     .subtitle { font-size: 0.9rem; }
+     .platform-selector { flex-direction: column; gap: 10px; align-items: center; }
+     .platform-button { width: 80%; justify-content: center;}
+     .hero-section { padding: 40px 15px 40px 15px; border-radius: 0 0 20px 20px; }
+     .downloader-area { margin: -20px auto 25px auto; padding: 20px; border-radius: 10px; }
+     .downloader-section h2 { font-size: 1.2rem; margin-bottom: 20px;}
+     .input-wrapper input[type="text"] { padding: 12px 85px 12px 15px; font-size: 0.9rem; }
+     .paste-button { font-size: 0.8rem; padding: 0 12px;}
+     .download-main-button { font-size: 0.95rem; padding: 14px; }
+     a.download-btn { min-width: 140px; font-size: 0.85rem; padding: 10px 15px;}
+     .features-section { padding: 40px 10px;}
+     .feature-item h3 { font-size: 1.1rem; }
+     .feature-item p { font-size: 0.9rem; }
+     footer { padding: 20px 15px; font-size: 0.8rem;}
+}
