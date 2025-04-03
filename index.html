@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapDonz - Unduh Video TikTok & Instagram</title>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- Bagian Atas (Hero & Pilihan Platform) -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="main-title">Welcome to <span class="snapdonz-brand">SnapDonz</span></h1>
+            <p class="subtitle">Unduh video favoritmu dari TikTok & Instagram</p>
+
+            <div class="platform-selector">
+                <button id="select-tiktok" class="platform-button active" onclick="switchPlatform('tiktok')">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </button>
+                <button id="select-instagram" class="platform-button" onclick="switchPlatform('instagram')">
+                    <i class="fab fa-instagram"></i> Instagram
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Hero Section -->
+
+    <!-- Area Downloader (Muncul berdasarkan pilihan) -->
+    <div class="downloader-area">
+
+        <!-- Downloader TikTok (Default Aktif) -->
+        <div id="tiktok-downloader" class="downloader-section active">
+            <h2><i class="fab fa-tiktok"></i> TikTok Video Downloader</h2>
+            <div class="input-wrapper">
+                <input type="text" id="tiktokUrl" placeholder="Tempel tautan video TikTok di sini">
+                <button class="paste-button" onclick="pasteFromClipboard('tiktokUrl')" title="Tempel dari Clipboard">
+                    <i class="fas fa-paste"></i> Tempel
+                </button>
+            </div>
+            <button class="download-main-button tiktok-grad" onclick="downloadVideo('tiktok')">
+                <i class="fas fa-download"></i> Download Video TikTok
+            </button>
+        </div>
+
+        <!-- Downloader Instagram (Default Tidak Aktif) -->
+        <div id="instagram-downloader" class="downloader-section">
+             <h2><i class="fab fa-instagram"></i> Instagram Video/Reels Downloader</h2>
+             <div class="input-wrapper">
+                <input type="text" id="instagramUrl" placeholder="Tempel tautan video/Reels Instagram">
+                 <button class="paste-button" onclick="pasteFromClipboard('instagramUrl')" title="Tempel dari Clipboard">
+                    <i class="fas fa-paste"></i> Tempel
+                </button>
+            </div>
+            <button class="download-main-button instagram-grad" onclick="downloadVideo('instagram')">
+                <i class="fas fa-download"></i> Download dari Instagram
+            </button>
+             <p class="api-warning">
+                 <i class="fas fa-exclamation-triangle"></i> Catatan: API Downloader Instagram seringkali tidak stabil. Hasil mungkin tidak selalu didapatkan.
+             </p>
+        </div>
+
+        <!-- Area Hasil & Loading (Dibagi untuk keduanya) -->
+        <div class="result-container">
+            <div id="loading" class="spinner"></div>
+            <p id="loadingText" class="loading-text">Memproses...</p>
+            <div id="result">
+                <!-- Hasil/Error akan muncul di sini -->
+            </div>
+        </div>
+
+    </div>
+    <!-- Akhir Area Downloader -->
+
+
+    <!-- Bagian Bawah (Fitur & Footer) -->
+    <div class="features-section">
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i class="fas fa-bolt fa-2x feature-icon"></i>
+                <h3>Cepat & Mudah</h3>
+                <p>Cukup tempel link dan klik download. Proses cepat tanpa ribet.</p>
+            </div>
+            <div class="feature-item">
+                 <i class="fas fa-infinity fa-2x feature-icon"></i>
+                <h3>Tanpa Batas</h3>
+                <p>Unduh video sebanyak yang Anda mau dari kedua platform, gratis.</p>
+            </div>
+             <div class="feature-item">
+                 <i class="fas fa-shield-alt fa-2x feature-icon"></i>
+                <h3>Aman & Bersih</h3>
+                <p>Antarmuka bersih tanpa iklan mengganggu dan aman digunakan.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© <span id="year"></span> SnapDonz. Dibuat oleh DonTzy.</p>
+         <p>Ini adalah alat independen dan tidak berafiliasi dengan TikTok atau Instagram.</p>
+    </footer>
+    <!-- Akhir Features Section -->
+
+
+    <!-- Popup Video -->
+    <div class="popup" id="videoPopup">
+        <span class="close" onclick="closePopup()">×</span>
+        <video id="popupVideo" controls></video>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+              </html>
