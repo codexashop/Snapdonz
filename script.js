@@ -92,7 +92,7 @@ async function downloadVideo(platform) {
         apiUrl = `https://api.im-rerezz.xyz/api/dl/tiktok?url=${encodeURIComponent(videoUrl)}`;
         platformName = 'TikTok';
     } else if (platform === 'instagram') {
-        apiUrl = `https://api.im-rerezz.xyz/api/dl/instagram?url=${encodeURIComponent(videoUrl)}`;
+        apiUrl = `https://delirius-apiofc.vercel.app/download/instagram?url=${encodeURIComponent(videoUrl)}`;
         platformName = 'Instagram';
     } else {
         loadingSpinner.style.display = 'none';
